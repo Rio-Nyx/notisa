@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Notisa
+Icon=/path/to/icon/notepad.png
+Exec=bash -c "/path/to/the/executable/notisa.sh" %f
+Path=/path/to/the/executable/
+Comment=The Drive to Develop
+Categories=Utility;
+Terminal=false
