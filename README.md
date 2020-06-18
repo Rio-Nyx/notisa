@@ -7,3 +7,4 @@ By default saves the content as notes.txt, but change to desired location in cod
 
 A clean notepad that has no annoying features And don't have to think about saving it.
 
+Build using python3 and tkinter
