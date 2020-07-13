@@ -6,9 +6,12 @@ window.title("Test appln")
 window.geometry("540x540")
 
 def openit():
-	f=open("notes.txt","r")
-	for line in f:
-		inp1.insert(tk.INSERT,line)
+	try:
+		f=open("notes.txt","r")
+		for line in f:
+			inp1.insert(tk.INSERT,line)
+	except:
+		f=open("notes.txt","x")
 	f.close()
 	
 def saveit(self):
@@ -21,6 +24,6 @@ inp1=tk.Text(window,height=540,width=540 )
 inp1.pack()
 openit()
 inp1.bind("<Leave>",saveit)
-inp1.bind("<key>",saveit)
+#inp1.bind("<key>",saveit)
 
 window.mainloop()
