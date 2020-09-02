@@ -1,7 +1,6 @@
 import tkinter as tk
 from jsonparser import *
 from tkinter import *
-#from config import *
 # from platform import processor --> thought of using processor name for encryption , but since there's a chance it might change'
 
 #background=["white","red","black","green","yellow","blue"]
@@ -16,13 +15,11 @@ class notepad:
 		self.background=settings['background']
 		self.foreground=settings['foreground']
 		self.fontsize=settings['fontsize']
-		#self.ind_bg=self.ind_fg=self.ind_fs=0
 		self.window = tk.Tk()
 		self.window.configure(background="grey")
 		self.window.title("Test appln")
 		self.window.geometry("540x540")
 		self.inp1=tk.Text(self.window,height=540,width=540 )		# creating a text bx
-		#self.inp1.config(font=("Courier", fontsize[0]),fg=foreground[0],background=background[0])
 		self.inp1.config(font=("Courier", self.fontsize),fg=self.foreground,background=self.background)
 		self.inp1.pack()        
 		#---------------------------------------------
@@ -30,8 +27,6 @@ class notepad:
 	def do_popup(self,event):			# create a popup when right clicked
 		print("Right button clicked")
 		# creating a pop up menu
-		#L = Label(self.window, text ="Right-click to display menu", width = 40, height = 20) 
-		#L.pack() 
 		menu_sub1=Menu(self.window,tearoff=0)
 		m = Menu(self.window, tearoff = 0)
 		
@@ -63,16 +58,8 @@ class notepad:
 		menu_sub4.add_command(label ="  30",command=lambda:self.changefs(30))
 		menu_sub4.add_command(label ="  40",command=lambda:self.changefs(40))
 		
-		#m.add_command(label ="change fontsize",command=lambda:self.changefs(25)) 
-#		m.add_command(label ="change background",command=self.changebg) 
-#		m.add_command(label ="change fontcolor",command=self.changefg) 
-#		m.add_command(label ="change fontsize",command=self.changefs) 
-		#m.add_command(label ="Reload") 
 		m.add_separator() 
 		m.add_command(label ="Close") 
-		#labelfont = ('courier', 20, 'bold')
-		#m.add_cascade(label="File",menu=menu_sub1)
-		#menu_sub1.add_command(label ="change fontsize",command=lambda:self.changefs(10)) 
 		try: 
 			m.tk_popup(event.x_root, event.y_root) 
 		finally: 
@@ -98,30 +85,20 @@ class notepad:
 		self.window.destroy()
 	
 	def changebg(self,color):
-#		self.ind_bg+=1
-#		if(self.ind_bg>5):
-#			self.ind_bg=0
 		settings['background']=self.background=color
 		self.update()
 	
 	def changefg(self,color):
-#		self.ind_fg+=1
-#		if(self.ind_fg>5):
-#			self.ind_fg=0
 		settings['foreground']=self.foreground=color
 		self.update()
 	
 	def changefs(self,size):
-#		self.ind_fs+=1
-#		if(self.ind_fs>5):
-#			self.ind_fs=0
 		settings['fontsize']=self.fontsize=size
 		self.update()
 		
 	def update(self):
 		jsonchange(settings)
 		self.inp1.config(font=("Courier", self.fontsize),fg=self.foreground,background=self.background)
-		#self.inp1.config(font=("Courier", fontsize[self.ind_fs]),fg=foreground[self.ind_fg],background=background[self.ind_bg])
 		
 	def run(self):
 		self.inp1.bind("<Leave>",self.saveit)
