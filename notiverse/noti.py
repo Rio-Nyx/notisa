@@ -106,7 +106,3 @@ class notepad:
 		self.inp1.bind('<Button-3>',self.do_popup)
 		self.window.protocol("WM_DELETE_WINDOW",self.close)
 		self.window.mainloop()
-notiverse=notepad()
-notiverse.openit()
-notiverse.run()
-
